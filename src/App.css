@@ -1798,3 +1798,280 @@ button {
     transition-duration: .01ms !important;
   }
 }
+
+/* === TRI-VERSE: 3D floating profile cards === */
+
+.orbit-scene {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.orbit-track {
+  transform-style: preserve-3d;
+}
+
+.orbit-profile {
+  transform-style: preserve-3d;
+  overflow: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition:
+    box-shadow 350ms ease,
+    border-color 350ms ease,
+    filter 350ms ease;
+  animation: triverse-card-float 6s ease-in-out infinite;
+}
+
+.orbit-profile-1 {
+  animation-delay: -1s;
+}
+
+.orbit-profile-2 {
+  animation-delay: -3s;
+}
+
+.orbit-profile-3 {
+  animation-delay: -5s;
+}
+
+.orbit-profile:hover {
+  z-index: 10;
+  filter: brightness(1.15);
+  box-shadow:
+    0 25px 65px #0008,
+    0 0 28px color-mix(
+      in srgb,
+      var(--profile-color),
+      transparent 68%
+    );
+}
+
+.orbit-photo-wrap,
+.orbit-photo-wrap img {
+  transform: translateZ(24px);
+}
+
+.orbit-name,
+.orbit-role,
+.orbit-open {
+  transform: translateZ(16px);
+}
+
+@keyframes triverse-card-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-profile {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ===== TRI-VERSE: LANDSCAPE 3D PROFILE SHOWCASE ===== */
+
+.orbit-scene {
+  width: min(900px, 100%);
+  height: 590px;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.orbit-track {
+  animation: none !important;
+  transform-style: preserve-3d;
+}
+
+.orbit-profile {
+  width: 270px;
+  min-height: 175px;
+  height: 175px;
+  padding: 18px;
+  margin: 0;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  column-gap: 15px;
+
+  border-radius: 14px;
+  background:
+    linear-gradient(140deg, #211a30 0%, #100e19 75%);
+  border: 1px solid
+    color-mix(in srgb, var(--profile-color) 65%, transparent);
+
+  box-shadow:
+    0 24px 70px #0008,
+    inset 0 0 30px #ffffff04,
+    0 0 28px
+      color-mix(in srgb, var(--profile-color) 12%, transparent);
+
+  transform-style: preserve-3d;
+  animation: cardShowcaseFloat 5s ease-in-out infinite;
+  transition: box-shadow .3s ease, border-color .3s ease;
+}
+
+/* Place the three existing profiles around the centre */
+
+.orbit-profile-1 {
+  left: 50%;
+  top: 50%;
+  transform: translate(-140%, -145%) rotate(-38deg);
+  animation-delay: -1s;
+}
+
+.orbit-profile-2 {
+  left: 50%;
+  top: 50%;
+  transform: translate(28%, -76%) rotate(38deg);
+  animation-delay: -3s;
+}
+
+.orbit-profile-3 {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 38%) rotate(-38deg);
+  animation-delay: -2s;
+}
+
+/* Photo */
+
+.orbit-photo-wrap {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 92px;
+  height: 92px;
+  margin: 0;
+  padding: 4px;
+  align-self: center;
+  box-sizing: border-box;
+  transform: translateZ(22px);
+}
+
+.orbit-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Profile text */
+
+.orbit-name {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 700;
+  transform: translateZ(18px);
+}
+
+.orbit-role {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  text-align: left;
+  font-size: 10px;
+  color: #aaa2bd;
+  line-height: 1.5;
+}
+
+.orbit-open {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: start;
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--profile-color);
+}
+
+.orbit-photo-number {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: #15101f;
+  border: 1px solid var(--profile-color);
+  border-radius: 7px;
+  font-size: 9px;
+}
+
+/* Smooth floating motion */
+
+@keyframes cardShowcaseFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+.orbit-profile:hover {
+  z-index: 8;
+  border-color: var(--profile-color);
+  box-shadow:
+    0 30px 75px #0009,
+    0 0 32px
+      color-mix(in srgb, var(--profile-color) 30%, transparent);
+}
+
+@media (max-width: 560px) {
+  .orbit-scene {
+    transform: scale(.65);
+    transform-origin: top center;
+    margin-bottom: -180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-profile {
+    animation: none;
+
+  }
+}
+
+/* Interactive hover glow for Tri-Verse */
+
+.orbit-profile,
+button,
+a {
+  transition:
+    box-shadow 250ms ease,
+    border-color 250ms ease,
+    filter 250ms ease;
+}
+
+.orbit-profile:hover {
+  filter: brightness(1.12);
+  box-shadow:
+    0 18px 55px #0008,
+    0 0 28px
+      color-mix(in srgb, var(--profile-color) 25%, transparent);
+}
+
+button:hover,
+a:hover {
+  filter: brightness(1.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-profile,
+  button,
+  a {
+    transition: none;
+  }
+}
+

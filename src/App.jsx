@@ -1,4 +1,4 @@
-
+import CursorFX from "./components/CursorFX.jsx";
 import { useState } from "react";
 import "./App.css";
 
@@ -36,27 +36,27 @@ const friends = [
   },
   {
     id: 1,
-    name: "Friend Two",
+    name: "Namo Tripathi",
     role: "Developer & Creator",
     photo:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=85",
+      "https://res.cloudinary.com/ix4yr8ul/image/upload/v1792089430/WhatsApp_Image_2026-10-15_at_11.41.48_PM_s2weke.jpg",
     color: "#55d6ff",
     about:
       "A creative developer who enjoys solving problems, exploring new technologies and building useful digital experiences.",
-    skills: ["HTML", "CSS", "JavaScript", "Problem Solving"],
-    github: "https://github.com/",
-    linkedin: "https://www.linkedin.com/",
-    email: "",
+    skills: ["HTML", "CSS","JAVA","C++","JavaScript", "Problem Solving"],
+    github: "https://github.com/Namo485",
+    linkedin: "https://www.linkedin.com/in/namo-tripathi-2a571033b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    email: "tripathinamo291@gmail.com",
     projects: [
       {
-        name: "Project One",
-        description: "Add this friend's first project here.",
-        link: "https://github.com/",
+        name: "WISH",
+        description: "An e-commerce platform for buying and selling products.",
+        link: "https://wishh-ecom.vercel.app/",
       },
       {
-        name: "Project Two",
-        description: "Add this friend's second project here.",
-        link: "https://github.com/",
+        name: "Veriscan-AI",
+        description: "An AI-powered verification platform.",
+        link: "https://veriscan-ai.onrender.com/",
       },
     ],
   },
@@ -323,6 +323,7 @@ export default function App() {
 
   return (
     <div className="triverse-app">
+      <CursorFX />
       {selectedFriend === null ? (
         <Universe onSelect={setSelectedFriend} />
       ) : (
