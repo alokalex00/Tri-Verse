@@ -1,14 +1,14 @@
 import CursorFX from "./components/CursorFX.jsx";
 import { useState } from "react";
 import "./App.css";
+import alokImage from "./assets/alok_image.jpg";
 
 const friends = [
   {
     id: 0,
     name: "Alok Kumar",
     role: "Frontend Developer",
-    photo:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85",
+    photo: alokImage,
     color: "#a58aff",
     about:
       "I build modern web experiences with React, JavaScript and creative UI design. I enjoy turning ideas into interactive digital products.",
@@ -139,7 +139,17 @@ function Universe({ onSelect }) {
               key={friend.id}
               className={`orbit-profile orbit-profile-${index + 1}`}
               style={{ "--profile-color": friend.color }}
-              onClick={() => onSelect(friend.id)}
+              onClick={() => {
+if (friend.id === 0) {
+window.open(
+"https://my-portfolio-alokkumar-alpha.vercel.app/",
+"_blank",
+"noopener,noreferrer"
+);
+} else {
+onSelect(friend.id);
+}
+}}
               aria-label={`Open ${friend.name}'s portfolio`}
             >
               <span className="orbit-photo-wrap">
